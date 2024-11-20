@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import rami.generic.dtos.airline.AirlineDTOPost;
 import rami.generic.dtos.clients.ClientDTOPost;
+import rami.generic.entities.AirlineEntity;
 import rami.generic.entities.ClientEntity;
+import rami.generic.models.AirlineModel;
 import rami.generic.models.ClientModel;
 import rami.generic.services.AirlineService;
 
@@ -21,7 +24,7 @@ import rami.generic.services.AirlineService;
 public class AirlineController {
     
     @Autowired
-    private AirlineService<ClientEntity, Long, ClientModel, ClientDTOPost> airlineService;
+    private AirlineService<AirlineEntity, Long, AirlineModel, AirlineDTOPost> airlineService;
 
     @GetMapping("")
     public ResponseEntity<?> getAll() {
@@ -29,22 +32,22 @@ public class AirlineController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClientModel> getById(@PathVariable Long id) {
+    public ResponseEntity<AirlineModel> getById(@PathVariable Long id) {
         return ResponseEntity.ok(airlineService.getModelById(id));
     }
 
     @PostMapping("")
-    public ResponseEntity<ClientModel> create(@RequestBody @Valid ClientDTOPost dtoPost) {
+    public ResponseEntity<AirlineModel> create(@RequestBody @Valid AirlineDTOPost dtoPost) {
         return ResponseEntity.ok(airlineService.create(dtoPost));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ClientModel> delete(@PathVariable Long id) {
+    public ResponseEntity<AirlineModel> delete(@PathVariable Long id) {
         return ResponseEntity.ok(airlineService.delete(id));
     }
 
     @PatchMapping("/{id}/reactivate")
-    public ResponseEntity<ClientModel> reactivate(@PathVariable Long id) {
+    public ResponseEntity<AirlineModel> reactivate(@PathVariable Long id) {
         return ResponseEntity.ok(airlineService.reactivate(id));
     }
 }

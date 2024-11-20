@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rami.generic.dtos.clients.ClientDTOPost;
+import rami.generic.dtos.ticket.TicketDTOPost;
 import rami.generic.entities.ClientEntity;
+import rami.generic.entities.TicketEntity;
 import rami.generic.models.ClientModel;
+import rami.generic.models.TicketModel;
 import rami.generic.services.TicketService;
 
 @RestController
@@ -21,7 +24,7 @@ import rami.generic.services.TicketService;
 public class TicketController {
     
     @Autowired
-    private TicketService<ClientEntity, Long, ClientModel, ClientDTOPost> ticketService;
+    private TicketService<TicketEntity, Long, TicketModel, TicketDTOPost> ticketService;
 
     @GetMapping("")
     public ResponseEntity<?> getAll() {
@@ -29,22 +32,22 @@ public class TicketController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClientModel> getById(@PathVariable Long id) {
+    public ResponseEntity<TicketModel> getById(@PathVariable Long id) {
         return ResponseEntity.ok(ticketService.getModelById(id));
     }
 
     @PostMapping("")
-    public ResponseEntity<ClientModel> create(@RequestBody @Valid ClientDTOPost dtoPost) {
+    public ResponseEntity<TicketModel> create(@RequestBody @Valid TicketDTOPost dtoPost) {
         return ResponseEntity.ok(ticketService.create(dtoPost));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ClientModel> delete(@PathVariable Long id) {
+    public ResponseEntity<TicketModel> delete(@PathVariable Long id) {
         return ResponseEntity.ok(ticketService.delete(id));
     }
 
     @PatchMapping("/{id}/reactivate")
-    public ResponseEntity<ClientModel> reactivate(@PathVariable Long id) {
+    public ResponseEntity<TicketModel> reactivate(@PathVariable Long id) {
         return ResponseEntity.ok(ticketService.reactivate(id));
     }
 }

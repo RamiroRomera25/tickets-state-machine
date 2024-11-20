@@ -12,10 +12,11 @@ import rami.generic.models.TravelModel;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.TravelRepository;
 import rami.generic.services.AirlineService;
+import rami.generic.services.TravelService;
 
 @Service
 public class TravelServiceImpl implements
-        AirlineService<TravelEntity, Long, TravelModel, TravelDTOPost> {
+        TravelService<TravelEntity, Long, TravelModel, TravelDTOPost> {
 
     @Autowired
     private TravelRepository travelRepository;

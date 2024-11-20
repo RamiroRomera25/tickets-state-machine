@@ -6,14 +6,13 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import rami.generic.dtos.airline.AirlineDTOPost;
 import rami.generic.entities.AirlineEntity;
-import rami.generic.entities.TicketEntity;
 import rami.generic.models.AirlineModel;
 import rami.generic.repositories.AirlineRepository;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.services.AirlineService;
 
 @Service
-public class AirplaneServiceImpl implements
+public class AirlineServiceImpl implements
         AirlineService<AirlineEntity, Long, AirlineModel, AirlineDTOPost> {
 
     @Autowired

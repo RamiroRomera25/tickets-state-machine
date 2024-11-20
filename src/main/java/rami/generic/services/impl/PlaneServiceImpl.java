@@ -13,10 +13,11 @@ import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.PlaneRepository;
 import rami.generic.repositories.TravelRepository;
 import rami.generic.services.AirlineService;
+import rami.generic.services.PlaneService;
 
 @Service
 public class PlaneServiceImpl implements
-        AirlineService<PlaneEntity, Long, PlaneModel, PlaneDTOPost> {
+        PlaneService<PlaneEntity, Long, PlaneModel, PlaneDTOPost> {
 
     @Autowired
     private PlaneRepository planeRepository;

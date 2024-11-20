@@ -12,16 +12,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rami.generic.dtos.clients.ClientDTOPost;
+import rami.generic.dtos.plane.PlaneDTOPost;
 import rami.generic.entities.ClientEntity;
+import rami.generic.entities.PlaneEntity;
 import rami.generic.models.ClientModel;
+import rami.generic.models.PlaneModel;
 import rami.generic.services.PlaneService;
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/planes")
 public class PlaneController {
     
     @Autowired
-    private PlaneService<ClientEntity, Long, ClientModel, ClientDTOPost> planeService;
+    private PlaneService<PlaneEntity, Long, PlaneModel, PlaneDTOPost> planeService;
 
     @GetMapping("")
     public ResponseEntity<?> getAll() {
@@ -29,22 +32,22 @@ public class PlaneController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClientModel> getById(@PathVariable Long id) {
+    public ResponseEntity<PlaneModel> getById(@PathVariable Long id) {
         return ResponseEntity.ok(planeService.getModelById(id));
     }
 
     @PostMapping("")
-    public ResponseEntity<ClientModel> create(@RequestBody @Valid ClientDTOPost dtoPost) {
+    public ResponseEntity<PlaneModel> create(@RequestBody @Valid PlaneDTOPost dtoPost) {
         return ResponseEntity.ok(planeService.create(dtoPost));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ClientModel> delete(@PathVariable Long id) {
+    public ResponseEntity<PlaneModel> delete(@PathVariable Long id) {
         return ResponseEntity.ok(planeService.delete(id));
     }
 
     @PatchMapping("/{id}/reactivate")
-    public ResponseEntity<ClientModel> reactivate(@PathVariable Long id) {
+    public ResponseEntity<PlaneModel> reactivate(@PathVariable Long id) {
         return ResponseEntity.ok(planeService.reactivate(id));
     }
 }
