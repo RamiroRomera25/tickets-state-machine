@@ -10,22 +10,27 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import rami.generic.entities.base.BaseEntity;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@Table(name = "dummy")
-public class DummyEntity extends BaseEntity {
+@Table(name = "airlines")
+public class AirlineEntity extends BaseEntity {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String dummy;
+    private String name;
 
-    private Long email;
+    private BigInteger canceledFlights;
 
-    private Long composeID1;
+    @Column
+    private BigInteger successFlights;
 
-    private Long composeID2;
+    @Column
+    private BigDecimal percentageForRefund;
 }

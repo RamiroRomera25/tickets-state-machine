@@ -1,6 +1,8 @@
 package rami.generic.services.genericSegregation.basicCRUD;
 
+import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
+import rami.generic.dtos.clients.ClientDTOPost;
 import rami.generic.repositories.GenericRepository;
 
 public interface GenericCreate<E, I, M, DTOPOST> {

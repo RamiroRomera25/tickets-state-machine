@@ -10,28 +10,13 @@ import rami.generic.services.genericSegregation.GenericMapper;
 
 import java.util.List;
 
-public interface GenericGetAllList<E, I, M, DTOFILTER> extends GenericMapper {
+public interface GenericGetAllList<E, I, M> extends GenericMapper {
     ModelMapper getMapper();
 
     GenericRepository<E, I> getRepository();
 
-    SpecificationBuilder<E> specificationBuilder();
-
     default List<M> getAll() {
         List<E> entityList = getRepository().findAll();
-        if (!entityList.isEmpty()) {
-            return getMapper().map(entityList, new TypeToken<List<M>>() {}.getType());
-        } else {
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT, "No content retrieved.");
-        }
-    }
-
-    default List<M> getAll(DTOFILTER filter) {
-        List<E> entityList =
-                getRepository()
-                .findAll(specificationBuilder()
-                        .withDynamicFilter(this.getFilterMap(filter))
-                        .build());
         if (!entityList.isEmpty()) {
             return getMapper().map(entityList, new TypeToken<List<M>>() {}.getType());
         } else {
