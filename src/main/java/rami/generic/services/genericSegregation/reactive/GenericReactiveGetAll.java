@@ -1,7 +1,6 @@
 package rami.generic.services.genericSegregation.reactive;
 
 import org.modelmapper.ModelMapper;
-import rami.generic.repositories.GenericRepositoryReactive;
 import rami.generic.repositories.specs.SpecificationBuilder;
 import rami.generic.services.genericSegregation.GenericMapper;
 

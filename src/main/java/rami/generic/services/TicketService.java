@@ -8,9 +8,8 @@ import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDelete;
 import rami.generic.services.genericSegregation.basicCRUD.GenericUpdate;
 
 @Service
-public interface TicketService<E extends BaseEntity, I, M, DTOPOST, DTOPUT>
+public interface TicketService<E extends BaseEntity, I, M, DTOPOST>
         extends GenericGetAllList<E, I, M>,
         GenericCreate<E, I, M, DTOPOST>,
-        GenericUpdate<E, I, M, DTOPUT>,
         GenericSoftDelete<E, I, M> {
 }

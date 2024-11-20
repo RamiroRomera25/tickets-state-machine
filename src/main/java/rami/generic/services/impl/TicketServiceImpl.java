@@ -12,6 +12,7 @@ import rami.generic.models.ClientModel;
 import rami.generic.models.TicketModel;
 import rami.generic.repositories.ClientRepository;
 import rami.generic.repositories.GenericRepository;
+import rami.generic.repositories.TicketRepository;
 import rami.generic.services.ClientService;
 import rami.generic.services.TicketService;
 
@@ -20,18 +21,19 @@ public class TicketServiceImpl implements
         TicketService<TicketEntity, Long, TicketModel, TicketDTOPost> {
 
     @Autowired
-    private ClientRepository clientRepository;
+    private TicketRepository ticketRepository;
 
     @Autowired @Qualifier("strictMapper")
     private ModelMapper mapper;
+
     @Override
-    public Class<ClientEntity> entityClass() {
-        return ClientEntity.class;
+    public Class<TicketEntity> entityClass() {
+        return TicketEntity.class;
     }
 
     @Override
-    public Class<ClientModel> modelClass() {
-        return ClientModel.class;
+    public Class<TicketModel> modelClass() {
+        return TicketModel.class;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class TicketServiceImpl implements
     }
 
     @Override
-    public GenericRepository<ClientEntity, Long> getRepository() {
-        return clientRepository;
+    public GenericRepository<TicketEntity, Long> getRepository() {
+        return ticketRepository;
     }
 }
