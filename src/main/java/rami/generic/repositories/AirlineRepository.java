@@ -4,5 +4,5 @@ import org.springframework.stereotype.Repository;
 import rami.generic.entities.AirlineEntity;
 
 @Repository
-public interface AirplaneRepository extends GenericRepository<AirlineEntity, Long> {
+public interface AirlineRepository extends GenericRepository<AirlineEntity, Long> {
 }
