@@ -138,4 +138,9 @@ public class TicketServiceImpl implements
 
         return mapper.map(ticketRepository.save(ticket), TicketModel.class);
     }
+
+    @Override
+    public TicketModel completeTicket(Long ticketId) {
+        return null;
+    }
 }

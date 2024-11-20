@@ -57,4 +57,9 @@ public class TicketController {
     public ResponseEntity<TicketModel> delete(@PathVariable Long id) {
         return ResponseEntity.ok(ticketService.cancelTicket(id));
     }
+
+    @PostMapping("/completed/{ticketId}")
+    public ResponseEntity<TicketModel> completed(@PathVariable Long ticketId) {
+        return ResponseEntity.ok(ticketService.completeTicket(ticketId));
+    }
 }

@@ -14,7 +14,8 @@ public interface TicketService<E extends BaseEntity, I, M, DTOPOST>
         GenericCreate<E, I, M, DTOPOST>,
         GenericGetById<E, I, M> {
 
-    TicketModel payTicket(Long ticketId);
-    TicketModel cancelTicket(Long ticketId);
-    TicketModel refundTicket(Long ticketId);
+    M payTicket(I ticketId);
+    M cancelTicket(I ticketId);
+    M refundTicket(I ticketId);
+    M completeTicket(I ticketId);
 }
