@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-@Table(name = "dummy")
+@Table(name = "travels")
 public class TravelEntity extends BaseEntity {
     @Id
     @Column

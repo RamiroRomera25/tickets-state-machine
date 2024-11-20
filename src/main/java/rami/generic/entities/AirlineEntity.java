@@ -26,10 +26,11 @@ public class AirlineEntity extends BaseEntity {
     @Column
     private String name;
 
-    private BigInteger canceledFlights;
+    @Column
+    private BigInteger canceledFlights = BigInteger.ZERO;
 
     @Column
-    private BigInteger successFlights;
+    private BigInteger successFlights = BigInteger.ZERO;
 
     @Column
     private BigDecimal percentageForRefund;
