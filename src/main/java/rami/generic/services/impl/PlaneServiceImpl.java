@@ -6,13 +6,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import rami.generic.dtos.plane.PlaneDTOPost;
 import rami.generic.entities.PlaneEntity;
-import rami.generic.entities.TravelEntity;
 import rami.generic.models.PlaneModel;
-import rami.generic.models.TravelModel;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.PlaneRepository;
-import rami.generic.repositories.TravelRepository;
-import rami.generic.services.AirlineService;
 import rami.generic.services.PlaneService;
 
 @Service

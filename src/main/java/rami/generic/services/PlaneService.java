@@ -5,7 +5,6 @@ import rami.generic.entities.base.BaseEntity;
 import rami.generic.services.genericSegregation.basicCRUD.GenericCreate;
 import rami.generic.services.genericSegregation.basicCRUD.GenericGetAllList;
 import rami.generic.services.genericSegregation.basicCRUD.GenericSoftDelete;
-import rami.generic.services.genericSegregation.basicCRUD.GenericUpdate;
 
 @Service
 public interface PlaneService<E extends BaseEntity, I, M, DTOPOST>
