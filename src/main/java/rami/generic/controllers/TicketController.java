@@ -38,13 +38,23 @@ public class TicketController {
         return ResponseEntity.ok(ticketService.create(dtoPost));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<TicketModel> delete(@PathVariable Long id) {
-        return ResponseEntity.ok(ticketService.delete(id));
+    @PostMapping("/pay/{ticketId}")
+    public ResponseEntity<TicketModel> pay(@PathVariable Long ticketId) {
+        return ResponseEntity.ok(ticketService.payTicket(ticketId));
     }
 
-    @PatchMapping("/{id}/reactivate")
-    public ResponseEntity<TicketModel> reactivate(@PathVariable Long id) {
-        return ResponseEntity.ok(ticketService.reactivate(id));
+    @PostMapping("/refund/{ticketId}")
+    public ResponseEntity<TicketModel> refund(@PathVariable Long ticketId) {
+        return ResponseEntity.ok(ticketService.refundTicket(ticketId));
+    }
+
+    @PostMapping("/cancel/{ticketId}")
+    public ResponseEntity<TicketModel> cancel(@PathVariable Long ticketId) {
+        return ResponseEntity.ok(ticketService.cancelTicket(ticketId));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<TicketModel> delete(@PathVariable Long id) {
+        return ResponseEntity.ok(ticketService.cancelTicket(id));
     }
 }

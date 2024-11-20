@@ -20,4 +20,6 @@ public class AirlineModel {
     private BigInteger successFlights;
 
     private BigDecimal percentageForRefund;
+
+    private BigDecimal totalRaised;
 }

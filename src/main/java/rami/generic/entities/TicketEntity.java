@@ -1,7 +1,9 @@
 package rami.generic.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,12 +32,12 @@ public class TicketEntity extends BaseEntity {
     private BigDecimal price;
 
     @Column
-    private TicketStatus status;
+    private TicketStatus status = TicketStatus.RESERVED;
 
     @Column
     private TicketClass clazz;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private TravelEntity travel;
 
     @ManyToOne

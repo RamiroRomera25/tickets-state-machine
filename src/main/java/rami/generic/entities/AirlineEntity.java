@@ -33,5 +33,8 @@ public class AirlineEntity extends BaseEntity {
     private BigInteger successFlights = BigInteger.ZERO;
 
     @Column
+    private BigDecimal totalRaised = BigDecimal.ZERO;
+
+    @Column
     private BigDecimal percentageForRefund;
 }
