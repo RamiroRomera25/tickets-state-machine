@@ -9,8 +9,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import rami.generic.entities.AirlineEntity;
 import rami.generic.entities.TicketEntity;
 import rami.generic.entities.base.BaseEntity;
@@ -18,23 +20,13 @@ import rami.generic.entities.base.BaseEntity;
 import java.math.BigInteger;
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Table(name = "planes")
-public class PlaneModel extends BaseEntity {
-
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PlaneModel {
     private Long id;
 
-    @Column
     private BigInteger planeNumber;
 
-    @ManyToOne
-    private AirlineEntity airline;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<TicketEntity> tickets;
+    private Long airline;
 }

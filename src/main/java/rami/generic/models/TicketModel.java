@@ -7,8 +7,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import rami.generic.entities.ClientEntity;
 import rami.generic.entities.TravelEntity;
 import rami.generic.entities.base.BaseEntity;
@@ -17,29 +19,20 @@ import rami.generic.enums.TicketStatus;
 
 import java.math.BigDecimal;
 
-@EqualsAndHashCode(callSuper = true)
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Table(name = "tickets")
-public class TicketModel extends BaseEntity {
+public class TicketModel {
 
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
     private BigDecimal price;
 
-    @Column
     private TicketStatus status;
 
-    @Column
     private TicketClass clazz;
 
-    @ManyToOne
-    private TravelEntity travel;
+    private Long travelId;
 
-    @ManyToOne
-    private ClientEntity client;
+    private Long clientId;
 }

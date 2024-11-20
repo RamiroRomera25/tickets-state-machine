@@ -7,33 +7,28 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import rami.generic.entities.PlaneEntity;
 import rami.generic.entities.base.BaseEntity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@EqualsAndHashCode(callSuper = true)
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Table(name = "dummy")
-public class TravelModel extends BaseEntity {
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class TravelModel {
+
     private Long id;
 
-    @ManyToOne
-    private PlaneEntity plane;
-
-    @Column
     private LocalDateTime startDate;
 
-    @Column
     private BigDecimal priceForEconomy;
 
-    @Column
     private BigDecimal priceForFirstClass;
+
+    private Long planeId;
 }

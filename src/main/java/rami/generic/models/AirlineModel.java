@@ -6,31 +6,26 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import rami.generic.entities.base.BaseEntity;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-@EqualsAndHashCode(callSuper = true)
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
-@Table(name = "airlines")
-public class AirlineModel extends BaseEntity {
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AirlineModel {
     private Long id;
 
-    @Column
     private String name;
 
     private BigInteger canceledFlights;
 
-    @Column
     private BigInteger successFlights;
 
-    @Column
     private BigDecimal percentageForRefund;
 }
