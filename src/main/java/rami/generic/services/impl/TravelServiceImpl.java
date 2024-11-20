@@ -5,13 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import rami.generic.dtos.travel.TravelDTOPost;
-import rami.generic.entities.AirlineEntity;
 import rami.generic.entities.TravelEntity;
-import rami.generic.models.AirlineModel;
 import rami.generic.models.TravelModel;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.TravelRepository;
-import rami.generic.services.AirlineService;
 import rami.generic.services.TravelService;
 
 @Service

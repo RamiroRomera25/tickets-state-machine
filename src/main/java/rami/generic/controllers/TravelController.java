@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import rami.generic.dtos.clients.ClientDTOPost;
 import rami.generic.dtos.travel.TravelDTOPost;
-import rami.generic.entities.ClientEntity;
 import rami.generic.entities.TravelEntity;
-import rami.generic.models.ClientModel;
 import rami.generic.models.TravelModel;
 import rami.generic.services.TravelService;
 

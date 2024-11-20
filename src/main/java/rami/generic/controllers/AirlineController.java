@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rami.generic.dtos.airline.AirlineDTOPost;
-import rami.generic.dtos.clients.ClientDTOPost;
 import rami.generic.entities.AirlineEntity;
-import rami.generic.entities.ClientEntity;
 import rami.generic.models.AirlineModel;
-import rami.generic.models.ClientModel;
 import rami.generic.services.AirlineService;
 
 @RestController

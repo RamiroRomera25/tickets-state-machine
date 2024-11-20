@@ -1,6 +1,5 @@
 package rami.generic.dtos.plane;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;

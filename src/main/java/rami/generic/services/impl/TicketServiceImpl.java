@@ -4,16 +4,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import rami.generic.dtos.clients.ClientDTOPost;
 import rami.generic.dtos.ticket.TicketDTOPost;
-import rami.generic.entities.ClientEntity;
 import rami.generic.entities.TicketEntity;
-import rami.generic.models.ClientModel;
 import rami.generic.models.TicketModel;
-import rami.generic.repositories.ClientRepository;
 import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.TicketRepository;
-import rami.generic.services.ClientService;
 import rami.generic.services.TicketService;
 
 @Service
@@ -44,5 +39,25 @@ public class TicketServiceImpl implements
     @Override
     public GenericRepository<TicketEntity, Long> getRepository() {
         return ticketRepository;
+    }
+
+    @Override
+    public TicketModel payTicket(Long ticketId) {
+        return null;
+    }
+
+    @Override
+    public TicketModel cancelTicket(Long ticketId) {
+        return null;
+    }
+
+    @Override
+    public TicketModel refundTicket(Long ticketId) {
+        return null;
+    }
+
+    @Override
+    public TicketModel completeTicket(Long ticketId) {
+        return null;
     }
 }

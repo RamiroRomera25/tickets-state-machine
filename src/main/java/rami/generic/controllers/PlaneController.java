@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import rami.generic.dtos.clients.ClientDTOPost;
 import rami.generic.dtos.plane.PlaneDTOPost;
-import rami.generic.entities.ClientEntity;
 import rami.generic.entities.PlaneEntity;
-import rami.generic.models.ClientModel;
 import rami.generic.models.PlaneModel;
 import rami.generic.services.PlaneService;
 
