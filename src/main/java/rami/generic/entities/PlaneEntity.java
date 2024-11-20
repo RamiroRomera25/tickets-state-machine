@@ -30,6 +30,9 @@ public class PlaneEntity extends BaseEntity {
     @Column
     private BigInteger planeNumber;
 
+    @Column
+    private BigInteger capacity;
+
     @ManyToOne
     private AirlineEntity airline;
 

@@ -13,8 +13,9 @@ import java.math.BigInteger;
 @NoArgsConstructor
 public class PlaneDTOPost {
 
-    @Column
     private BigInteger planeNumber;
+
+    private BigInteger capacity;
 
     @ManyToOne
     private Long airlineId;

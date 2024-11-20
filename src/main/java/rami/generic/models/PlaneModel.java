@@ -12,6 +12,8 @@ import java.math.BigInteger;
 public class PlaneModel {
     private Long id;
 
+    private BigInteger capacity;
+
     private BigInteger planeNumber;
 
     private Long airline;
