@@ -17,8 +17,10 @@ import rami.generic.repositories.GenericRepository;
 import rami.generic.repositories.TicketRepository;
 import rami.generic.services.TicketService;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 @Service
 public class TicketServiceImpl implements
@@ -127,20 +129,35 @@ public class TicketServiceImpl implements
 
         TravelEntity travel = ticket.getTravel();
 
-        Integer result = LocalDateTime.now().compareTo(travel.getStartDate());
+        Long dayDiff = ChronoUnit.DAYS.between(LocalDateTime.now(), travel.getStartDate());
 
         ticket.setStatus(TicketStatus.REFUND);
         ticket.setIsActive(false);
 
         AirlineEntity airline = ticket.getTravel().getPlane().getAirline();
 
-        airline.setTotalRaised(airline.getTotalRaised().add(ticket.getPrice()));
+        BigDecimal totalPercentageForRefund =
+                airline.getPercentageForRefund()
+                .multiply(BigDecimal.valueOf(dayDiff))
+                .multiply(BigDecimal.valueOf(100L));
+
+        BigDecimal totalToKeep = ticket.getPrice().multiply(totalPercentageForRefund);
+
+        airline.setTotalRaised(airline.getTotalRaised().subtract(ticket.getPrice().subtract(totalToKeep)));
 
         return mapper.map(ticketRepository.save(ticket), TicketModel.class);
     }
 
     @Override
     public TicketModel completeTicket(Long ticketId) {
-        return null;
+        TicketEntity ticket = this.getById(ticketId);
+
+        if (ticket.getStatus() == TicketStatus.CANCELLED || ticket.getStatus() == TicketStatus.REFUND) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Can't confirm a ticket cancelled or refund. :)");
+        }
+
+        ticket.setStatus(TicketStatus.COMPLETED);
+
+        return mapper.map(ticketRepository.save(ticket), TicketModel.class);
     }
 }
