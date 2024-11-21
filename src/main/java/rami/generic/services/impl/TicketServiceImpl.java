@@ -1,6 +1,9 @@
 package rami.generic.services.impl;
 
+import org.apache.logging.log4j.Level;
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -25,6 +28,8 @@ import java.time.temporal.ChronoUnit;
 @Service
 public class TicketServiceImpl implements
         TicketService<TicketEntity, Long, TicketModel, TicketDTOPost> {
+
+    private static final Logger logger = LoggerFactory.getLogger(TicketServiceImpl.class);
 
     @Autowired
     private TicketRepository ticketRepository;
@@ -62,11 +67,14 @@ public class TicketServiceImpl implements
 
     @Override
     public TicketModel create(TicketDTOPost dtoPost) {
+
         TicketEntity newTicket = new TicketEntity();
 
         TravelEntity travel = travelService.getById(dtoPost.getTravelId());
 
         PlaneEntity plane = travel.getPlane();
+
+
 
         if (plane.getCapacity().compareTo(BigInteger.valueOf(travel.getTickets().size())) < 0) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "The plane is full of capacity.");
@@ -90,6 +98,7 @@ public class TicketServiceImpl implements
         TicketEntity ticket = this.getById(ticketId);
 
         if (ticket.getStatus() != TicketStatus.RESERVED) {
+            logger.error("Ticket invalido para pagar.");
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "We accept donations but not into this way. :)");
         }
 
@@ -100,6 +109,8 @@ public class TicketServiceImpl implements
         AirlineEntity airline = plane.getAirline();
 
         airline.setTotalRaised(airline.getTotalRaised().add(ticket.getPrice()));
+
+        logger.debug("Ticket comprado.");
 
         return mapper.map(ticketRepository.save(ticket), TicketModel.class);
     }

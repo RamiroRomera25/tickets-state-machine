@@ -42,9 +42,4 @@ public class PlaneController {
     public ResponseEntity<PlaneModel> delete(@PathVariable Long id) {
         return ResponseEntity.ok(planeService.delete(id));
     }
-
-    @PatchMapping("/{id}/reactivate")
-    public ResponseEntity<PlaneModel> reactivate(@PathVariable Long id) {
-        return ResponseEntity.ok(planeService.reactivate(id));
-    }
 }

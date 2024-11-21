@@ -42,9 +42,4 @@ public class TravelController {
     public ResponseEntity<TravelModel> delete(@PathVariable Long id) {
         return ResponseEntity.ok(travelService.delete(id));
     }
-
-    @PatchMapping("/{id}/reactivate")
-    public ResponseEntity<TravelModel> reactivate(@PathVariable Long id) {
-        return ResponseEntity.ok(travelService.reactivate(id));
-    }
 }
