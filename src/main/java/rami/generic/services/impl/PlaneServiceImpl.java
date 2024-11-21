@@ -62,8 +62,7 @@ public class PlaneServiceImpl implements
         }
 
         plane.setIsActive(false);
-        
+
         return mapper.map(planeRepository.save(plane), PlaneModel.class);
     }
-
 }
